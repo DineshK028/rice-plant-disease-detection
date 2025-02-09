@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Disease Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input[type="file"], input[type="text"], button {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result, .error {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .result {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rice Disease Detector</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="file">Upload an Image:</label><br>
+        <input type="file" name="file" accept="image/*"><br>
+        <label for="url">Or<br> Enter Image URL:</label><br>
+        <input type="text" name="url" placeholder="Enter Image URL"><br>
+        <button type="submit">Predict</button>
+    </form>
+    
+    {% if prediction %}
+        <div class="result">{{ prediction }}</div>
+    {% endif %}
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+</body>
+</html>
